@@ -3,7 +3,7 @@
 #include <conio.h>
 #include <time.h>
 typedef struct elemento {
-  char *nome;
+	char *nome;
 	int status;
 	time_t tempoFila;
 	time_t tempoAtend;
@@ -20,6 +20,7 @@ void insere();
 void imprimir();
 void imprimirDoFinal();
 void comprimento();
+void atender();
 //void excluirInicio();
 //void insmeio(no*t, int x);
 //void remmeio(no*t);
@@ -55,6 +56,10 @@ main() {
 		switch (i) {
 
 		case '1':
+            if(inicio == NULL)
+            printf("Fila Vazia!");
+            else
+            atender();
 			getch();
 			system("cls");
 			break;
@@ -252,6 +257,54 @@ void insere() {
 	}
 
 	system("cls");
+}
+
+void atender(){
+    char i;
+    system("cls");
+	while (i != '\n') {
+        printf("Cliente em atendimento: %s\n\n",inicio->nome);
+		printf(" (1)-Saca\n");
+		printf(" (2)-Deposita \n");
+		printf(" (3)-Extrato\n");
+		printf(" (4)-Proximo Cliente\n");
+        i = getch();
+
+		switch (i) {
+  
+        case '1':
+        printf("Cliente %s sacou dinheiro.",inicio->nome);
+        getch();
+        system("cls");
+        break;
+        
+        case '2':
+        printf("Cliente %s depositou dinheiro.",inicio->nome);
+        getch();
+        system("cls");
+        break;
+        
+        case '3':
+        printf("Cliente %s tirou extrato.",inicio->nome);
+        getch();
+        system("cls");
+        break;
+        
+        case '4':
+            if(inicio == final){
+                printf("Fim da fila!");
+                inicio = NULL;
+                i='\n';
+                break;  
+            }
+        aux = inicio;
+        inicio = inicio->prox;
+        free(aux->nome);
+        free(aux);
+        system("cls");
+        break;
+        }
+    }
 }
 
 /*void removeFim() {
