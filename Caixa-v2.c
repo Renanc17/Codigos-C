@@ -213,10 +213,10 @@ void atender(){
     system("cls");
 	while (i != '\n') {
         printf("Cliente em atendimento: %s\n\n",inicio->nome);
-		printf(" (1)-Saca\n");
-		printf(" (2)-Deposita \n");
-		printf(" (3)-Extrato\n");
-		printf(" (4)-Proximo Cliente\n");
+	printf(" (1)-Saca\n");
+	printf(" (2)-Deposita \n");
+	printf(" (3)-Extrato\n");
+	printf(" (4)-Proximo Cliente\n");
         i = getch();
 
 		switch (i) {
